@@ -1,22 +1,23 @@
 
-class Counter{
-    int value=0;
-    public synchronized void increment(){ 
+class Counter {
+    int value = 0;
+
+    public synchronized void increment() {
         // synchronized helps to make sure only one thread call this function at a time
         value++;
     }
 }
 
 public class Joining_threads {
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
         Counter c = new Counter();
-        Runnable obj1 = ()->{
-            for(int i=0;i<1000;i++){
+        Runnable obj1 = () -> {
+            for (int i = 0; i < 1000; i++) {
                 c.increment();
             }
         };
-        Runnable obj2 = ()->{
-            for(int i=0;i<1000;i++){
+        Runnable obj2 = () -> {
+            for (int i = 0; i < 1000; i++) {
                 c.increment();
             }
         };
@@ -25,7 +26,7 @@ public class Joining_threads {
         Thread t2 = new Thread(obj2);
         t1.start();
         t2.start();
-         try {
+        try {
             t1.join(); // stops main till thread is completed
             t2.join(); // stops main till thread is completed
         } catch (InterruptedException e) {

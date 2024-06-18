@@ -32,7 +32,7 @@ class B implements Runnable {
 }
 
 public class using_thread_by_runnable {
-    
+
     public static void main(String[] args) {
         // using_thread_by_runnable obj = new using_thread_by_runnable();
         Runnable obj1 = new A();
@@ -40,7 +40,6 @@ public class using_thread_by_runnable {
 
         Thread t1 = new Thread(obj1);
         Thread t2 = new Thread(obj2);
-
 
         t1.start();
 
